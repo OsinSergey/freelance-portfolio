@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 backToTop();
 	// Custom JS
-	$("#phone").mask("(999) 999-99-99");
-	$("#phone2").mask("(999) 999-99-99");
+	$("#phone").mask("8(999) 999-99-99");
+	$("#phone2").mask("8(999) 999-99-99");
 	$('.mouse-icon').click(function () {
 		$('html, body').animate({
 			scrollTop: $('.features').offset().top
