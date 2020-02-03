@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		var th = $(this);
 		$.ajax({
 			type: "POST",
-			url: "../mailer/smart.php, //Change			
+			url: "../mailer/smart.php", //Change			
 			data: th.serialize(),
 		}).done(function () {
 			th.find(".success").addClass("active");
