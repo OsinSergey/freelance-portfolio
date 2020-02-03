@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
 
 
-	function backToTop(){
+	function backToTop() {
 		let button = $('.back-to-top');
 
 		$(window).on('scroll', () => {
 			if ($(this).scrollTop() >= 400) {
 				button.fadeIn();
-				
+
 			} else {
 				button.fadeOut();
 			}
@@ -15,15 +15,24 @@ document.addEventListener("DOMContentLoaded", function () {
 		button.on('click', (e) => {
 
 			e.preventDefault();
-			$('html').animate({scrollTop:0}, 1000);
+			$('html').animate({
+				scrollTop: 0
+			}, 1000);
 		});
 
 	}
-backToTop();
+	backToTop();
 	// Custom JS
-	$("#phone").mask("8(999) 999-99-99");
-	$("#phone2").mask("8(999) 999-99-99");
+	$("#phone").mask("+7(999) 999-99-99");
+	$("#phone2").mask("+7(999) 999-99-99");
 	$('.mouse-icon').click(function () {
+		$('html, body').animate({
+			scrollTop: $('.services').offset().top
+		}, 1000);
+
+	});
+
+	$('.mouse-icon2').click(function () {
 		$('html, body').animate({
 			scrollTop: $('.features').offset().top
 		}, 1000);
@@ -43,13 +52,13 @@ backToTop();
 		});
 
 	});
-	modalnav.click(function(){
+	modalnav.click(function () {
 		over.hide();
 		$('html, body').css({
 			overflow: 'auto',
 			height: 'auto'
 		});
-		
+
 	});
 	closenav.click(function () {
 		over.hide();
@@ -79,6 +88,26 @@ backToTop();
 		},
 
 
+	});
+
+	//mail
+	$('form').on('submit', function (e) {
+		e.preventDefault(); //Change
+		var th = $(this);
+		$.ajax({
+			type: "POST",
+			url: "../mailer/smart.php, //Change			
+			data: th.serialize(),
+		}).done(function () {
+			th.find(".success").addClass("active");
+			setTimeout(function () {
+				// Done Functions
+				th.find(".success").removeClass("active");
+				th.trigger("reset");
+				$.fancybox.close();
+			}, 1000);
+		});
+		return false;
 	});
 
 });
